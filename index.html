@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -11,310 +12,424 @@
     <meta property="og:description" content="From Curiosity to Capability — A Shared Journey of Discovery for the NTU EMBA Generative AI Learning Group." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="The NTU EMBA Generative AI Learning Group" />
-    <!-- 
-      若要指定分享連結時的預覽圖片，請取消以下 meta 標籤的註解，並將 content 中的 "URL_TO_YOUR_PREVIEW_IMAGE.jpg" 
-      替換為實際圖片的完整網址 (建議圖片尺寸為 1200x630 pixels，格式為 JPG 或 PNG)。
-      圖片需要上傳到公開可存取的網路空間。
-    <meta property="og:image" content="URL_TO_YOUR_PREVIEW_IMAGE.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    -->
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --color-primary: #2563EB; /* Blue 600 */
+            --color-primary-light: #EFF6FF; /* Blue 50 */
+            --color-text-primary: #111827; /* Gray 900 */
+            --color-text-secondary: #374151; /* Gray 700 */
+            --color-text-subtle: #6B7280; /* Gray 500 */
+            --color-bg-body: #F9FAFB; /* Gray 50 */
+            --color-bg-card: #FFFFFF;
+            --color-border: #E5E7EB; /* Gray 200 */
+            --font-sans: 'Inter', sans-serif;
+            --font-serif: 'Lora', serif;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
-            line-height: 1.75;
+            font-family: var(--font-sans);
+            background-color: var(--color-bg-body);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+
         .highlight-text {
-            color: #2563EB;
+            color: var(--color-primary);
+            font-weight: 500;
         }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease-in-out, opacity 0.35s ease-in-out;
-            opacity: 0;
-            background-color: #ffffff;
-            border-top: 1px solid #e5e7eb; /* Separator line for content */
+
+        /* Header Styles */
+        .header {
+            background-color: var(--color-bg-card);
+            border-bottom: 1px solid var(--color-border);
         }
-        .accordion-item summary::-webkit-details-marker { display: none; }
-        .accordion-item summary {
-            list-style: none;
-            background-color: #ffffff;
+        .main-title {
+            color: var(--color-text-primary);
+            font-family: var(--font-serif);
         }
-        .accordion-item summary:hover { background-color: #f9fafb; }
-        .accordion-arrow {
-            color: #2563EB;
-            transition: transform 0.3s ease-out;
-        }
-        .main-title { color: #111827; }
-        .main-title-emdash { color: #6b7280; }
         .main-title-experience {
             font-weight: 400;
             font-size: 0.8em;
-            color: #374151;
+            color: var(--color-text-subtle);
             display: block; 
-            margin-top: 0.25em;
+            margin-top: 0.5em;
+            letter-spacing: 0.5px;
         }
         @media (min-width: 768px) {
             .main-title-experience {
                 display: inline;
                 margin-top: 0;
-                font-size: 0.9em;
+                font-size: 0.8em;
+                position: relative;
+                top: -0.1em;
+                margin-left: 0.75rem;
+            }
+            .main-title-experience::before {
+                content: '—';
+                margin-right: 0.75rem;
+                color: var(--color-border);
             }
         }
-        .year-heading-static { /* Style for non-collapsible year like 2025 */
-            font-family: 'Lora', serif;
-            color: #111827;
-            border-bottom: 2px solid #2563EB;
-            padding-bottom: 0.6rem; 
-            margin-bottom: 1.75rem;
+
+        /* Section & Year Headings */
+        .section-title {
+            font-family: var(--font-serif);
+            color: var(--color-text-primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
         }
-        .section-title { /* Used for Lora font and color, base for headings */
-            font-family: 'Lora', serif;
-            color: #111827;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-primary);
+            border-radius: 2px;
         }
-        .card {
-            background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
+        .year-heading {
+            font-family: var(--font-serif);
+            color: var(--color-text-primary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: 0.75rem; 
+            margin-bottom: 2rem;
         }
-        .accordion-item.card { border: 1px solid #e5e7eb; } /* Ensure accordion items that are cards have the border */
         
+        /* Card & Accordion Styles */
+        .card {
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-all);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .accordion-item {
+            border-color: transparent;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid transparent;
+        }
+        .accordion-item summary {
+            list-style: none;
+        }
+        .accordion-item summary::-webkit-details-marker { 
+            display: none; 
+        }
+
+        details[open] > summary {
+            background-color: var(--color-primary-light);
+        }
+        details[open].accordion-item {
+             border-left-color: var(--color-primary);
+        }
+
+        .accordion-arrow {
+            color: var(--color-primary);
+            transition: transform 0.3s ease-in-out;
+        }
+        details[open] .accordion-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, padding 0.4s ease-in-out;
+            opacity: 0;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
         .accordion-content ul {
-            list-style-type: disc;
-            list-style-position: inside;
+            list-style-type: none;
             padding-left: 0.5rem;
         }
         .accordion-content ul li {
-            margin-bottom: 0.25rem;
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem; /* Increased spacing */
         }
+        .accordion-content ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: bold;
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+        
+        /* Facilitator Card Style */
+        .facilitator-card {
+            border-left: 5px solid var(--color-primary);
+        }
+
     </style>
 </head>
 <body class="antialiased">
-    <header class="text-center py-16 md:py-24 bg-white border-b border-gray-200">
+    <header class="header text-center py-16 md:py-24">
         <div class="container mx-auto px-6">
             <h1 class="main-title text-4xl md:text-5xl font-bold leading-tight">
                 Charting the Future with Generative AI 
-                <span class="main-title-emdash md:inline hidden">—</span> 
                 <span class="main-title-experience">The NTU EMBA Experience</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-600 mt-6">
+            <p class="text-lg md:text-xl text-gray-500 mt-6 max-w-3xl mx-auto">
                 From Curiosity to Capability — A Shared Journey of Discovery
             </p>
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12 md:py-16">
-        <section id="learning-milestones" class="mb-16 md:mb-20">
-            <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-center">Learning Milestones</h2>
+    <main class="container mx-auto px-6 py-16 md:py-24">
+        <section id="learning-milestones" class="mb-16 md:mb-24">
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center">Learning Milestones</h2>
             
-            <div class="mb-12">
-                <h3 class="year-heading-static text-2xl font-semibold">2025</h3>
+            <div class="mb-16">
+                <h3 class="year-heading text-3xl font-semibold">2025</h3>
                 <div class="space-y-4">
                     <details class="accordion-item card rounded-lg overflow-hidden">
-                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2025-07-11" class="text-lg font-medium text-gray-700">2025/7/11</time>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
+                                <ul class="space-y-1">
+                                    <li>互動式網頁製作: 規劃與除錯</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
                             <time datetime="2025-05-23" class="text-lg font-medium text-gray-700">2025/5/23</time>
-                            <span class="accordion-arrow text-xl">▼</span>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
                         </summary>
-                        <div class="accordion-content px-6 py-4 text-gray-600">
-                            <ul class="space-y-1">
-                                <li>建立Custom GPT</li>
-                                <li>ChatGPT Projects 與 Gemini Gems</li>
-                                <li>Canvas 文稿編輯</li>
-                            </ul>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
+                                <ul class="space-y-1">
+                                    <li>建立Custom GPT</li>
+                                    <li>ChatGPT Projects 與 Gemini Gems</li>
+                                    <li>Canvas 文稿編輯</li>
+                                </ul>
+                            </div>
                         </div>
                     </details>
-                    <details class="accordion-item card rounded-lg overflow-hidden">
-                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
+                     <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
                             <time datetime="2025-04-24" class="text-lg font-medium text-gray-700">2025/4/24</time>
-                            <span class="accordion-arrow text-xl">▼</span>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
                         </summary>
-                        <div class="accordion-content px-6 py-4 text-gray-600">
-                            <ul class="space-y-1">
-                                <li>Personalize your AI</li>
-                                <li>Deep Research的實踐: ChatGPT、Gemini、Perplexity AI</li>
-                            </ul>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
+                                <ul class="space-y-1">
+                                    <li>Personalize your AI</li>
+                                    <li>Deep Research的實踐: ChatGPT、Gemini、Perplexity AI</li>
+                                </ul>
+                            </div>
                         </div>
                     </details>
                     <details class="accordion-item card rounded-lg overflow-hidden">
-                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
                             <time datetime="2025-03-21" class="text-lg font-medium text-gray-700">2025/3/21</time>
-                            <span class="accordion-arrow text-xl">▼</span>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
                         </summary>
-                        <div class="accordion-content px-6 py-4 text-gray-600">
-                            <ul class="space-y-1">
-                                <li>AI 繪圖</li>
-                                <li>剖析Prompt structure</li>
-                                <li>練習Recraft AI</li>
-                            </ul>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
+                                <ul class="space-y-1">
+                                    <li>AI 繪圖</li>
+                                    <li>剖析Prompt structure</li>
+                                    <li>練習Recraft AI</li>
+                                </ul>
+                            </div>
                         </div>
                     </details>
                     <details class="accordion-item card rounded-lg overflow-hidden">
-                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
                             <time datetime="2025-02-21" class="text-lg font-medium text-gray-700">2025/2/21</time>
-                            <span class="accordion-arrow text-xl">▼</span>
+                           <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
                         </summary>
-                        <div class="accordion-content px-6 py-4 text-gray-600">
-                            <ul class="space-y-1">
-                                <li>Google AI Studio 深度解說</li>
-                                <li>應用練習</li>
-                            </ul>
+                        <div class="accordion-content text-gray-600">
+                             <div class="py-4">
+                                <ul class="space-y-1">
+                                    <li>Google AI Studio 深度解說</li>
+                                    <li>應用練習</li>
+                                </ul>
+                            </div>
                         </div>
                     </details>
                 </div>
             </div>
 
-            <details class="accordion-item card rounded-lg overflow-hidden mb-12">
-                <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                    <h3 class="section-title text-2xl font-bold !mb-0">2024</h3> 
-                    <span class="accordion-arrow text-xl">▼</span>
-                </summary>
-                <div class="accordion-content px-6 py-4">
-                    <div class="space-y-4">
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-12-27" class="text-lg font-medium text-gray-700">2024/12/27</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+            <div>
+                <h3 class="year-heading text-3xl font-semibold">2024</h3>
+                <div class="space-y-4">
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-12-27" class="text-lg font-medium text-gray-700">2024/12/27</time>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                             <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>Google NotebookLM 基礎認識</li>
                                     <li>進階應用實作</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-11-29" class="text-lg font-medium text-gray-700">2024/11/29</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-11-29" class="text-lg font-medium text-gray-700">2024/11/29</time>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>Prompt Engineering指令工程深度解析與實作</li>
                                     <li>第二梯次</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-11-15" class="text-lg font-medium text-gray-700">2024/11/15</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-11-15" class="text-lg font-medium text-gray-700">2024/11/15</time>
+                           <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>群組擴增後的第一堂</li>
                                     <li>Prompt Engineering指令工程深度解析與實作</li>
                                     <li>第一梯次</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-08-02" class="text-lg font-medium text-gray-700">2024/8/2</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                     <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-08-02" class="text-lg font-medium text-gray-700">2024/8/2</time>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>指令優化技巧</li>
                                     <li>Text-to-Sound, Image-to-Music</li>
                                     <li>Singing Photos: Hedra</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-07-05" class="text-lg font-medium text-gray-700">2024/7/5</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-07-05" class="text-lg font-medium text-gray-700">2024/7/5</time>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>生成式AI專有詞彙溫故與知新</li>
                                     <li>video-to-audio</li>
                                     <li>AI 音樂創作Suno</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-06-14" class="text-lg font-medium text-gray-700">2024/6/14</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-06-14" class="text-lg font-medium text-gray-700">2024/6/14</time>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>人形機器人的發展</li>
                                     <li>AI 英語</li>
                                     <li>AI影片創作Luma Dream Machine</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-05-17" class="text-lg font-medium text-gray-700">2024/5/17</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-05-17" class="text-lg font-medium text-gray-700">2024/5/17</time>
+                            <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>AI領域發展現況</li>
                                     <li>AI新聞英語常用字彙</li>
                                     <li>AI繪圖 Adobe Firefly</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-05-03" class="text-lg font-medium text-gray-700">2024/5/3</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-05-03" class="text-lg font-medium text-gray-700">2024/5/3</time>
+                           <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>認識Copilot與Claude</li>
                                     <li>Anthropic Prompt Library(提示庫)</li>
                                     <li>AI領域專業用語</li>
                                 </ul>
                             </div>
-                        </details>
-                        <details class="accordion-item card rounded-lg overflow-hidden">
-                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                                <time datetime="2024-04-19" class="text-lg font-medium text-gray-700">2024/4/19</time>
-                                <span class="accordion-arrow text-xl">▼</span>
-                            </summary>
-                            <div class="accordion-content px-6 py-4 text-gray-600">
+                        </div>
+                    </details>
+                    <details class="accordion-item card rounded-lg overflow-hidden">
+                        <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                            <time datetime="2024-04-19" class="text-lg font-medium text-gray-700">2024/4/19</time>
+                           <svg class="accordion-arrow h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </summary>
+                        <div class="accordion-content text-gray-600">
+                            <div class="py-4">
                                 <ul class="space-y-1">
                                     <li>產業概況</li>
                                     <li>AI領域常見名詞</li>
                                     <li>如何有效使用大型語言模型</li>
                                 </ul>
                             </div>
-                        </details>
-                    </div>
+                        </div>
+                    </details>
                 </div>
-            </details>
+            </div>
         </section>
 
         <section id="about-facilitator" class="mb-16 md:mb-20">
-            <details class="accordion-item card rounded-lg overflow-hidden">
-                <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none">
-                    <h2 class="section-title text-3xl md:text-4xl font-bold !mb-0">About the Facilitator</h2>
-                    <span class="accordion-arrow text-xl">▼</span>
-                </summary>
-                <div class="accordion-content px-6 py-4">
-                    <article class="text-gray-700 space-y-4">
-                        <p>
-                            Patricia Liu is the facilitator of the <span class="highlight-text">NTU EMBA Generative AI Learning Group</span> and a member of the NTU EMBA Mountaineering Club. She holds an EMBA degree from The Chinese University of Hong Kong and has extensive experience both in front of and behind the camera in television production.
-                        </p>
-                        <p>
-                            She served as an AI advisor for the Global Warming series on Follow Me Go! (下課花路米), an award-winning children's program on Taiwan’s Public Television Service (公共電視台), contributing to bilingual content development, project planning, and visual restoration.
-                        </p>
-                        <p>
-                            Passionate about exploring new ideas, Patricia combines proactive learning with a keen eye for aesthetics.
-                        </p>
-                    </article>
-                </div>
-            </details>
+            <h2 class="section-title text-3xl md:text-4xl font-bold mb-12 text-center">About the Facilitator</h2>
+            <article class="facilitator-card card p-8 md:p-10 space-y-4 max-w-4xl mx-auto">
+                <p class="text-lg leading-relaxed">
+                    Patricia Liu is the facilitator of the <span class="highlight-text">NTU EMBA Generative AI Learning Group</span>. She holds an EMBA degree from The Chinese University of Hong Kong and has worked both in front of and behind the camera in television production.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    She contributed as an AI advisor to the Global Warming series in Follow Me Go! (下課花路米), an award-winning children’s program on Public Television Service (公共電視台) in Taiwan, supporting bilingual content, project planning, and visual restoration.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Passionate about new ideas, Patricia blends self-driven learning with a sharp eye for aesthetics.
+                </p>
+            </article>
         </section>
     </main>
 
@@ -323,45 +438,64 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
             const accordionItems = document.querySelectorAll('.accordion-item');
 
             accordionItems.forEach(item => {
                 const summary = item.querySelector('summary');
-                // Ensure content and arrow are direct children or correctly selected if nested deeper
-                const content = summary.nextElementSibling; // Assumes .accordion-content is the direct next sibling
-                const arrow = summary.querySelector('.accordion-arrow');
+                const content = item.querySelector('.accordion-content');
 
-                if (!summary || !content || !arrow) {
-                    // console.warn('Accordion item is missing summary, content, or arrow:', item);
-                    return; // Skip if essential parts are missing
-                }
-                
                 summary.addEventListener('click', (event) => {
+                    // Prevent the default <details> toggle behavior
                     event.preventDefault();
-                    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-                    if (isOpen) {
-                        content.style.maxHeight = null;
+                    // Abort if an animation is already in progress
+                    if (item.dataset.isAnimating) {
+                        return;
+                    }
+
+                    if (item.open) {
+                        // Set animating flag
+                        item.dataset.isAnimating = 'true';
+                        
+                        // Start fade out and shrink
                         content.style.opacity = '0';
-                        item.removeAttribute('open');
-                        arrow.textContent = '▼';
+                        content.style.maxHeight = '0px';
+                        content.style.paddingTop = '0px';
+                        content.style.paddingBottom = '0px';
+
+                        // When animation ends, close the <details> and remove flag
+                        content.addEventListener('transitionend', () => {
+                            item.open = false;
+                            delete item.dataset.isAnimating;
+                        }, { once: true });
+
                     } else {
-                        item.setAttribute('open', 'true');
-                        content.style.maxHeight = content.scrollHeight + "px";
+                        // Immediately open the <details> to make content visible for height calculation
+                        item.open = true;
+                        
+                        // Set animating flag
+                        item.dataset.isAnimating = 'true';
+
+                        // Start fade in and expand
                         content.style.opacity = '1';
-                        arrow.textContent = '▲';
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.style.paddingTop = '1rem'; // Corresponds to py-4
+                        content.style.paddingBottom = '1rem'; // Corresponds to py-4
+
+                        // When animation ends, remove flag
+                        content.addEventListener('transitionend', () => {
+                            delete item.dataset.isAnimating;
+                        }, { once: true });
                     }
                 });
 
-                if (item.hasAttribute('open')) {
-                    content.style.maxHeight = content.scrollHeight + "px";
+                // Ensure initially open items are styled correctly on page load
+                if (item.open) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
                     content.style.opacity = '1';
-                    arrow.textContent = '▲';
-                } else {
-                    content.style.maxHeight = null;
-                    content.style.opacity = '0';
-                    arrow.textContent = '▼';
+                    content.style.paddingTop = '1rem';
+                    content.style.paddingBottom = '1rem';
                 }
             });
         });
