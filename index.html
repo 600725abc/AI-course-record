@@ -172,8 +172,7 @@
         <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
             <!-- Logo -->
             <div class="flex-shrink-0">
-                <!-- Corrected Image Path: Using a public, permanent URL -->
-                <img src="ai-brain.jpeg" alt="GenAI Learning Group Logo" class="h-28 md:h-36 w-auto">
+                <img src="ai-brain.png" alt="GenAI Learning Group Logo" class="h-28 md:h-36 w-auto">
             </div>
             <!-- Text Content -->
             <div class="text-center md:text-left">
@@ -190,7 +189,7 @@
     <main class="container mx-auto px-6 py-16 md:py-24">
         <section id="learning-milestones" class="mb-16 md:mb-24">
             <div class="text-center mb-16">
-                <h2 class="section-title text-4xl md:text-5xl">Learning Milestones</h2>
+                <h2 class="section-title text-4xl md:5xl md:text-5xl">Learning Milestones</h2>
                 <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">From Curiosity to AI Skills: Our Course in Action</p>
             </div>
             
@@ -311,6 +310,18 @@
                             </summary>
                             <div class="accordion-content text-gray-600"><div class="py-4"><ul><li>互動式網頁製作: 規劃與除錯</li></ul></div></div>
                         </details>
+                        <!-- New: 2025-08-22 -->
+                        <details class="accordion-item card rounded-lg overflow-hidden">
+                            <summary class="flex justify-between items-center cursor-pointer p-6 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 rounded-lg">
+                                <time datetime="2025-08-22" class="text-gray-700">2025/8/22</time>
+                                <svg class="accordion-arrow h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                            </summary>
+                            <div class="accordion-content text-gray-600"><div class="py-4"><ul>
+                                <li>GPT-5</li>
+                                <li>互動式網頁製作 Part 2</li>
+                                <li>GPT-4o繪圖進階應用</li>
+                            </ul></div></div>
+                        </details>
                     </div>
                 </div>
 
@@ -345,17 +356,13 @@
             const toggleAllButton = document.getElementById('toggle-all-btn');
 
             // --- Reusable functions to open/close accordions with animation ---
-
             const openAccordion = (item) => {
                 const content = item.querySelector('.accordion-content');
                 if (!item || !content || item.open || item.dataset.isAnimating) return;
-
                 item.dataset.isAnimating = 'true';
                 item.open = true;
-                
                 content.style.maxHeight = content.scrollHeight + 'px';
                 content.style.opacity = '1';
-
                 content.addEventListener('transitionend', () => {
                     delete item.dataset.isAnimating;
                 }, { once: true });
@@ -364,11 +371,9 @@
             const closeAccordion = (item) => {
                 const content = item.querySelector('.accordion-content');
                 if (!item || !content || !item.open || item.dataset.isAnimating) return;
-
                 item.dataset.isAnimating = 'true';
                 content.style.maxHeight = '0px';
                 content.style.opacity = '0';
-
                 content.addEventListener('transitionend', () => {
                     item.open = false;
                     delete item.dataset.isAnimating;
@@ -376,7 +381,6 @@
             };
 
             // --- Attach event listener for individual accordion items ---
-
             accordionItems.forEach(item => {
                 const summary = item.querySelector('summary');
                 if (summary) {
@@ -401,11 +405,9 @@
             });
 
             // --- Attach event listener for the 'Expand All' / 'Collapse All' button ---
-
             if (toggleAllButton) {
                 toggleAllButton.addEventListener('click', () => {
                     const shouldExpand = toggleAllButton.textContent.includes('Expand All');
-                    
                     accordionItems.forEach(item => {
                         if (shouldExpand) {
                             openAccordion(item);
@@ -413,7 +415,6 @@
                             closeAccordion(item);
                         }
                     });
-
                     toggleAllButton.textContent = shouldExpand ? 'Collapse All' : 'Expand All';
                 });
             }
